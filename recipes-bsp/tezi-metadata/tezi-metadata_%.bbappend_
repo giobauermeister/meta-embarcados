@@ -1,0 +1,14 @@
+FILESEXTRAPATHS_prepend := "${THISDIR}/files:"
+
+SRC_URI = " \
+    file://logo_embarcados.png \
+    file://marketing_embarcados.tar;unpack=false \
+"
+
+do_deploy_append(){
+	rm ${DEPLOYDIR}/marketing.tar
+	install -m 644 ${WORKDIR}/marketing_embarcados.tar ${DEPLOYDIR}/marketing.tar
+
+	rm ${DEPLOYDIR}/logo_embarcados.png
+	install -m 644 ${WORKDIR}/logo_embarcados.png ${DEPLOYDIR}/toradexlinux.png
+}
